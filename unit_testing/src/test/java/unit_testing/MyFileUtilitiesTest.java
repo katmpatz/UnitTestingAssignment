@@ -2,6 +2,9 @@ package unit_testing;
 
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Rule;
 
@@ -35,9 +38,21 @@ public class MyFileUtilitiesTest {
 	public ExpectedException thrown = ExpectedException.none();
 	
 	@Test
-	public void test_readFile_RuleException() {
-		thrown.expect(IllegalArgumentException.class);
-		mfu.readFile("grades5.txt");// non exist file
+	public void test_readFile_RuleException_FileNotFound() throws IllegalArgumentException {
+	    ArrayList<Object> list = new ArrayList<Object>();
+	 
+	    thrown.expect(IllegalArgumentException.class);
+	    thrown.expectMessage("Error while reading the file: FileNotFoundException");
+	    list.get(0);
+	}
+	
+	@Test
+	public void test_readFile_RuleException_IOException() throws IllegalArgumentException {
+		ArrayList<Object> list = new ArrayList<Object>();
+		 
+	    thrown.expect(IllegalArgumentException.class);
+	    thrown.expectMessage("Error while reading the file: IOException");
+	    list.get(0);
 	}
 
 }
