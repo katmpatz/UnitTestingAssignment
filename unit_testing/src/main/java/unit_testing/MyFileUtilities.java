@@ -3,7 +3,6 @@ package unit_testing;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -36,11 +35,11 @@ public class MyFileUtilities {
 		         }
 		    	br.close();
 		    }
-		    catch (FileNotFoundException e) {
-		    	throw new IllegalArgumentException("Error while reading the file: FileNotFoundException");
+		    catch (Exception e) {
+		    	throw new IllegalArgumentException("Error while reading the file: IOException ");
 		    }
-		} catch (IOException e) {
-			throw new IllegalArgumentException("Error while reading the file: IOException");
+		} catch (FileNotFoundException e) {
+			throw new IllegalArgumentException("Error while reading the file: FileNotFoundException");
 		}
 		int[] grades = new int[size];
 		for(int i=0;i<size;i++){
